@@ -235,7 +235,7 @@ Now Claude could greet me by name!
 
 ### Resources, error handling, and MCP logging
 
-The next tool, `greet_name`, is where the project got interesting. Unlike the previous two tools, it takes multiple inputs: a person's name and a language. Then, uses the language to look up a greeting from a shared data file and return something like "Bonjour, Chuck!" It's the first tool that has real validation concerns (what if the language isn't supported?), real observability concerns (what is the model actually passing in?), and a dependency on shared server state. It took four distinct iterations to arrive at the final version, and each one taught something new.
+The next tool, `greet_name`, is where the project got interesting. Unlike the previous two tools, it takes multiple inputs: a person's name and a language. Then, it uses the language to look up a greeting from a shared data file and return something like "Bonjour, Chuck!" It's the first tool that has real validation concerns (what if the language isn't supported?), real observability concerns (what is the model actually passing in?), and a dependency on shared server state. It took four distinct iterations to arrive at the final version, and each one taught something new.
 
 #### Part 1: Zod enum for validation
 
@@ -383,7 +383,6 @@ This project was explicitly a learning exercise, but there are natural direction
 
 - **Prompt templates** — the third MCP primitive I haven't touched. Prompts let you define reusable prompt templates that the user (not the model) can insert into the conversation.
 - **Stateful sessions** — the HTTP transport supports session tracking via `sessionIdGenerator`. Stateful sessions would let you maintain per-connection state, which opens up tools that span multiple requests.
-- **Dynamic tool registration** — tools and resources can be registered after the server starts, and you can notify clients when the tool list changes. Useful for servers that discover their capabilities at runtime.
 - **Real data sources** — everything here is hardcoded. Connecting `greet_name` to a real translation API, or the languages resource to a database, would make it a genuinely useful server.
 - **Deployment** — the HTTP transport is already deployable as a standard Node.js service. Wrapping `server.js` in a container and putting it behind a reverse proxy gets you a hosted MCP endpoint.
 
@@ -393,10 +392,9 @@ This project was explicitly a learning exercise, but there are natural direction
 
 Building `hello-mcp` gave me a much better mental model of MCP than reading the spec did. A few things I'd tell someone starting out:
 
-1. **Start with the stdio transport.** It's five lines of code and gives you immediate feedback via Claude Desktop. HTTP comes later.
 2. **Separate your server from your transport from day one.** The cost is negligible; the flexibility is real.
 3. **Use `isError: true` for recoverable errors.** The model can reason about tool errors; it can't reason about JSON-RPC exceptions.
 4. **Resources are for clients, not models.** If you need the model to see data, make it a tool.
-5. **Check the SDK version.** The API has changed; older examples may lead you astray.
+5. **Check the SDK version.** MCPs are evolving fast; older examples may lead you astray.
 
 If you want to see the full working server — all the tools, both transports, the resource, and the factory pattern — the complete source is on GitHub at [github.com/chuckmeyer/hello-mcp](https://github.com/chuckmeyer/hello-mcp). Clone it, connect it to Claude Desktop, and try breaking `greet_name` with an unsupported language. It's a good way to see how all the pieces fit together.
