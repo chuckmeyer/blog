@@ -2,7 +2,7 @@
 title: 'Building a Javascript "Hello,World" MCP server in 2026'
 description: Practical steps and pitfalls toward building a basic MCP in 2026
 tags: 'mcp, javascript, tutorial'
-cover_image: '![Abstract techscape](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/h8rqzc8wgc7m71p6pvj2.png)'
+cover_image: './assets/devto_header_1000x420_ultra_abstract_mcp.png'
 canonical_url: null
 published: true
 id: 3279465
@@ -54,6 +54,8 @@ This is a minor thing, but it tripped me up when I tried to copy-paste from olde
 ---
 
 ## Building the framework
+
+The server is built in three layers: a transport layer, the MCP itself, and the underlying tools.
 
 I separated the MCP server from the transport layer in my code early on, mostly because it felt like the natural way to structure things. At the time, I did it mostly to keep components small and easy to consume since I was learning. It turned out to be genuinely useful later when I realized certain clients have transport limitations. More on that later.
 
