@@ -2,10 +2,11 @@
 title: 'Building a Javascript "Hello,World" MCP server in 2026'
 description: Practical steps and pitfalls toward building a basic MCP in 2026
 tags: 'mcp, javascript, tutorial'
-cover_image: './assets/devto_header_1000x420_ultra_abstract_mcp.png'
+cover_image: ./assets/devto_header_1000x420_ultra_abstract_mcp.png
 canonical_url: null
 published: true
 id: 3279465
+date: '2026-02-24T03:43:56Z'
 ---
 
 The [Model Context Protocol](https://modelcontextprotocol.io) (MCP) is Anthropic's open standard for connecting AI models to external tools and data sources. I'd been reading, (and talking), about it for months before building one for myself. After reading through several existingg posts that built around complex APIs, I decided to go as basic as possible with a simple `hello-mcp` — a minimal MCP server I built in an evening, starting from a single tool that says "Hello, World!" and ending with a dual-transport server with error handling, protocol logging, and a design I'm actually happy with.
