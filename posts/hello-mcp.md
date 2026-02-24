@@ -2,9 +2,9 @@
 title: 'Building a Javascript "Hello,World" MCP server in 2026'
 description: Practical steps and pitfalls toward building a basic MCP in 2026
 tags: 'mcp, javascript, tutorial'
-cover_image: ''
+cover_image: '![Abstract techscape](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/h8rqzc8wgc7m71p6pvj2.png)'
 canonical_url: null
-published: false
+published: true
 id: 3279465
 ---
 
@@ -14,9 +14,11 @@ The [Model Context Protocol](https://modelcontextprotocol.io) (MCP) is Anthropic
 
 ## A moving target: how the MCP SDK has evolved
 
-The best way to build MCP servers in Node.js is using the official JavaScript SDK: `@modelcontextprotocol/sdk`. Its `McpServer` class is the core abstraction: create an instance, register tools and resources on it, then connect it to a transport. Everything I built in this project sits on top of that.
+The best way to build MCP servers in Node.js is using the official JavaScript SDK: `@modelcontextprotocol/sdk`. 
 
-Before diving in, a word of warning: if you're learning MCP from blog posts or tutorials, check the dates carefully. The SDK is evolving rapidly and most of the blogs I found we already out of date. By the time you read this, this one might be as well.
+The `McpServer` class is the core abstraction: create an instance, register tools and resources on it, then connect it to a transport. Everything I built in this project sits on top of that.
+
+But, first a word of warning. If you're learning MCP from blog posts or tutorials, check the dates carefully. The SDK is evolving rapidly and most of the blogs I found we already out of date. By the time you read this, this one might be as well.
 
 For instance, most examples I found used a `tool()` method to register tools:
 
