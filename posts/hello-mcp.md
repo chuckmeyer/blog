@@ -1,5 +1,5 @@
 ---
-title: Building a streaming Hello,World MCP server in Javascript
+title: Building a Javascript "Hello,World" MCP server in 2026
 description: Practical steps and pitfalls toward building a basic MCP in 2026
 tags: 'mcp, javascript, tutorial'
 cover_image: ''
@@ -232,7 +232,7 @@ Now Claude could greet me by name!
 
 The next tool, `greet_name`, is where the project got interesting. Unlike the previous two tools, it takes multiple inputs: a person's name and a language. Then, uses the language to look up a greeting from a shared data file and return something like "Bonjour, Chuck!" It's the first tool that has real validation concerns (what if the language isn't supported?), real observability concerns (what is the model actually passing in?), and a dependency on shared server state. It took four distinct iterations to arrive at the final version, and each one taught something new.
 
-**Act 1: Zod enum for validation**
+#### Part 1: Zod enum for validation
 
 The first version was straightforward. It took a `name` string and a `language` input constrained to a Zod enum built directly from the keys of the greetings data file:
 
@@ -261,7 +261,7 @@ This felt clean. The valid language values are derived directly from the data �
 
 The problem is that `-32602` is a protocol-level JSON-RPC error. The model can't see the error message — it just knows the call failed. There's no way for Claude to tell the user "I tried 'klingon' but it's not a supported language." It just hits a wall.
 
-**Act 2: Free-form string input and `isError`**
+#### Part 2: Free-form string input and `isError`
 
 To experiment with error handling and logging, I switched the language input from a Zod enum to a plain `z.string()`. This intentionally removed the automatic validation — any string gets through to the handler — so I could handle bad input in the handler and respond in a way the model could actually use:
 
@@ -290,7 +290,7 @@ The distinction matters:
 
 For recoverable errors where the model should be able to react, `isError: true` is almost always the right choice.
 
-**Act 3: Logging with the factory pattern**
+#### Part 3: Logging with the factory pattern
 
 With error handling in place, I wanted to add MCP protocol logging — emitting `info`, `warning`, and `debug` messages visible in the MCP Inspector's notifications panel. The SDK method for this is `server.sendLoggingMessage()`, but that requires a reference to the `server` object inside the tool handler.
 
@@ -340,7 +340,7 @@ server.registerTool(greetName.name, greetName.config, greetName.createHandler(se
 
 The tool file never imports `server`. `mcp.js` calls the factory at registration time and passes itself in. The dependency flows one way. No circularity.
 
-**Act 4: Resources vs. tools in Claude Desktop**
+#### Part 4: Resources vs. tools in Claude Desktop
 
 Without the enum, I needed a way for the model to discover the list of valid languages. I built a `languages://list` resource — a read-only MCP resource backed by the same `greetings.js` data file:
 
