@@ -196,7 +196,7 @@ A few things I learned the hard way:
 
 - **Use an absolute path.** Claude Desktop spawns the process from a different working directory, so relative paths fail silently.
 - **Quit and fully relaunch Claude Desktop** after editing the config. There's no hot-reload.
-- **Verify the connection** at Claude menu → Settings → Developer. The server should be labeled as "running" (this use to be a green dot but has evolved with the introduciton of Connectors)
+- **Verify the connection** at Claude menu → Settings → Developer. The server should be labeled as "running" (this use to be a green dot but has evolved with the introduction of Connectors)
 
 Once my server was running, I could just type "say hello to the world" in Claude and watch it invoke `hello_world` automatically. The model sees the tool description and decides when to call it — I didn't direct it explicitly.
 
