@@ -4,7 +4,7 @@ description: 'How to stamp out correctly-configured agents across multiple conte
 tags: 'agents, patterns, devops'
 cover_image: ./assets/agent_factory_header_1000x420.png
 canonical_url: null
-published: false
+published: true
 id: 3345251
 ---
 
