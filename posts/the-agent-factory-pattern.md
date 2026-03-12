@@ -32,9 +32,15 @@ Typically in agent frameworks all three legs are configured at creation time. Th
 
 Recently, I used [Algolia's Agent Studio](https://www.algolia.com/doc/guides/algolia-ai/agent-studio) to build a demo application for a Pokemon card vending machine we use at Algolia's conference booths. Attendees chat with an AI agent to find cards, check values, and claim what they received. The agent retrieves all of the underlying data from a searchable index using an MCP-like tool.
 
+![Demo app screenshot](./assets/agent_factory_app_cap.png)
+
 Each conference gets a fresh machine stocked with that event's cards. All three legs of the stool need to adapt: the **tool** must point at that event's index (`shoptalk-2026`, not `etail-palm-springs-2026`). The **prompt** must reference the right event name, booth number, and context. Even the underlying **model** might change based on cost or event context (I should probably steer clear of Gemini models at an AWS event!).
 
 All three parts of the definition can vary per event. So how do you stamp out a correctly-configured agent for each event without doing it by hand?
+
+---
+
+## The Mono Agent
 
 At first, I considered a single shared agent with tool access to every event's indices. It's tempting to have one agent to maintain. But agents are static. A shared agent has no way to know which event it's at, so it can't scope its searches or tailor its responses to the right context. It either searches everything indiscriminately or requires guardrails you can't actually enforce. One agent per event was the only way to provide this context. But how to keep them consistent?
 
