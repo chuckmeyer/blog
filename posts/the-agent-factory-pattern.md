@@ -42,6 +42,10 @@ At first, I considered a single shared agent with tool access to every event's i
 
 ## The Factory Pattern
 
+The answer is to treat agent creation as a repeatable process: define the three legs as templates, render them together for each new context, register the resulting agent ID, and manage the fleet as a unit. The diagram below shows how those pieces fit together. I call this the Agent Factory pattern.
+
+![Agent Factory Pattern diagram](./assets/agent_factory_diagram.png)
+
 ### One Template, Three Legs
 
 The key insight is that the model, tools, and prompt aren't independent — they reference the same context. The index name in the tool configuration should match what the prompt tells the agent it's searching. If you render them separately, they can drift.
@@ -122,9 +126,15 @@ algolia-agent update      # diffs and pushes changes to existing agents
 algolia-agent publish     # promotes a draft to live
 ```
 
-The `init` command walks through the definition in order: pick a provider and model, select tools, write a prompt. It also offers a `create without tools` option since an agent backed only by a model and a prompt is a valid configuration.
+The `init` command walks through the definition in order:
 
-### Building a Better Stool: A prompt example
+1. Pick a provider and model
+2. Select tools (or not, an agent backed by a model and a prompt is valid)
+3. Write a prompt
+
+---
+
+## Building a Better Stool: A prompt example
 
 A user at the booth asked: *"Do you have any cards worth more than $50?"*
 
@@ -133,8 +143,11 @@ The first version of the prompt had no guidance on numeric filters. The agent se
 The fix was one line in the prompt:
 
 ```markdown
-For "more than" / "less than" questions on numeric fields, use comparison operators
-in searchParams filters rather than facets: e.g. `searchParams: { filters: 'estimated_value > 50' }`
+For "more than" / "less than" questions on
+numeric fields, use comparison operators in
+searchParams filters rather than facets:
+e.g.
+    `searchParams: { filters: 'estimated_value > 50' }`
 ```
 
 After adding this, the agent correctly translated the question into a filter against the `estimated_value` attribute, returning only cards actually priced above $50.

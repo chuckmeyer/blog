@@ -30,8 +30,11 @@ date: '<ISO timestamp assigned by dev.to>'
 ```
 
 - `id` and `date` are written back to the file automatically by the publish action after first publication — do not set them manually
-- `published: false` saves as a draft on dev.to without making it public
+- Always start new posts with `published: false` — never set `published: true` unless explicitly told the post is ready to go live
+- Use `./assets/basic_header_1000x420.png` as the default `cover_image` for new posts unless told otherwise
 - Cover images go in `posts/assets/`
+- Write prose as single continuous lines — no hard line breaks within paragraphs
+- First reference to any external product or tool should be hyperlinked
 
 ## Repo Structure
 
@@ -40,6 +43,10 @@ date: '<ISO timestamp assigned by dev.to>'
 - `working_docs/` — drafts, outlines, and scratch notes (not published)
 - `.github/workflows/publish.yml` — the publish action configuration
 - `.env` — local dev.to API token (never commit this)
+
+## Working Conventions
+
+- Never commit or push without being explicitly asked to do so
 
 ## Secrets Required
 
