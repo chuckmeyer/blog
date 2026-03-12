@@ -1,10 +1,11 @@
 ---
 title: 'The Agent Factory: Building Consistent Algolia Agents at Scale'
-description: How to stamp out correctly-configured agents across multiple contexts using the Agent Factory pattern — template-driven configuration, registry-backed IDs, and full lifecycle management.
+description: 'How to stamp out correctly-configured agents across multiple contexts using the Agent Factory pattern — template-driven configuration, registry-backed IDs, and full lifecycle management.'
 tags: 'agents, patterns, devops'
 cover_image: ./assets/agent_factory_header_1000x420.png
 canonical_url: null
 published: false
+id: 3345251
 ---
 
 Agents are suddenly everywhere. But deploying the same agent to multiple events, customers, or product lines is harder than it looks. How do you make sure every instance has the right configuration? And when something improves, how do you propagate it without touching each one by hand?
