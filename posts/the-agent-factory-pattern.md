@@ -6,6 +6,7 @@ cover_image: ./assets/agent_factory_header_1000x420.png
 canonical_url: null
 published: true
 id: 3345251
+date: '2026-03-12T23:17:15Z'
 ---
 
 Agents are suddenly everywhere. But deploying the same agent to multiple events, customers, or product lines is harder than it looks. How do you make sure every instance has the right configuration? And when something improves, how do you propagate it without touching each one by hand?
