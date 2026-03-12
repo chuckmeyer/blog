@@ -2,7 +2,7 @@
 title: 'The Agent Factory: Building Consistent Algolia Agents at Scale'
 description: How to stamp out correctly-configured agents across multiple contexts using the Agent Factory pattern — template-driven configuration, registry-backed IDs, and full lifecycle management.
 tags: 'agents, patterns, devops'
-cover_image: ''
+cover_image: ./assets/agent_factory_header_1000x420.png
 canonical_url: null
 published: false
 ---
@@ -150,7 +150,7 @@ The hardest part of managing multiple agents isn't creating them — it's keepin
 
 ## Conclusion
 
-Building a conference demo that needed to scale across events forced me to think carefully about what an agent actually is. Strip it down and you get three legs: a model, a set of tools, and a prompt. Once I had that definition, it was easy to separate what was core agent configuration from what was event-specific context.
+Building an agent demo that needed to scale across conference events forced me to think carefully about what an agent actually is. Strip it down and you get three legs: a model, a set of tools, and a prompt. Once I had that definition, it was easy to separate what was core agent configuration from what was event-specific context.
 
 The factory pattern helped me formalize that separation into something repeatable: scaffold the agent definition, render it for each context, perform consistent CRUD operations across every instance. When something improves — a better prompt, a model upgrade, a tool fix — one command propagates it to every agent at once.
 
