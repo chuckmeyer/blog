@@ -4,7 +4,7 @@ description: What happens when AI chat stops living in the corner and becomes pa
 tags: 'agents, search, ai, algolia'
 cover_image: ./assets/chat-meet-the-searchbox.png
 canonical_url: https://www.algolia.com/blog/engineering/chat-meet-the-searchbox
-published: false
+published: true
 ---
 
 ## Your agent is so 2025
