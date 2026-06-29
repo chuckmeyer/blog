@@ -3,8 +3,10 @@ title: 'Chat, Meet the Searchbox'
 description: What happens when AI chat stops living in the corner and becomes part of search itself — lessons from integrating Algolia Agent Studio and InstantSearch.
 tags: 'agents, search, ai, algolia'
 cover_image: ./assets/chat-meet-the-searchbox.png
-canonical_url: https://www.algolia.com/blog/engineering/chat-meet-the-searchbox
+canonical_url: 'https://www.algolia.com/blog/engineering/chat-meet-the-searchbox'
 published: true
+id: 4024600
+date: '2026-06-29T19:20:03Z'
 ---
 
 ## Your agent is so 2025
